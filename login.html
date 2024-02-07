@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>login page</title>
+        <link rel="stylesheet" href="./styles.css" type="text/css">
+    </head>
+    <body>
+        <div class="loginform">
+            <p id="signup">Sign up!</p><br><br>
+            <form name="form" onsubmit="return validate()" id="form" class="form">
+                <label class="formlabel">First Name: </label>
+                <input type="text" name="fname" required><br><br>
+                <label class="formlabel">Last Name: </label>
+                <input type="text" name="lname" required><br><br>
+                <label class="formlabel">Email Address: </label>
+                <input type="email" name="email" required><br><br>
+                <label class="formlabel">Username: </label>
+                <input type="text" name="user" required><br><br>
+                <label class="formlabel">Password: </label> 
+                <input type="password" name="pwd" required><br><br>
+                <label class="formlabel">Confirm Password: </label>
+                    <input type="password" name="cpwd" required><br><br>
+                <input type="submit" value="Register" class="Register">
+            
+            </form>
+        </div>
+        <br><br>
+        <p id="ErrMsg"></p>
+
+        <script type="text/javascript">
+            function validate(){
+                var fname = document.form.fname.value;
+                var lname = document.form.lname.value;
+                var email = document.form.email.value;
+                var user = document.form.user.value;
+                var password = document.form.pwd.value;
+                var cpassword = document.form.cpwd.value;
+
+                if (fname == "" || lname == "" || password == "" || cpassword == "" || user == "") {
+                    document.getElementById("ErrMsg").innerHTML = "All fields are mandatory!";
+                    alert("all fields are mandatory!");
+                    return false;
+                }
+                if (password.length < 6) {
+                    document.getElementById("ErrMsg").innerHTML = "Password length must be greater than 6 characters!";
+                    alert("Password length must be greater than 6 characters!");
+                    return false;
+                }
+                if (password != cpassword) {
+                    document.getElementById("ErrMsg").innerHTML = "Password doesn't match!";
+                    alert("Password doesn't match! ");
+                    return false;
+                }
+    
+                // Only redirect if validation passes
+                console.log("Validation passed. Redirecting...");
+                window.location.href = "connect.html";
+                return false    ;
+            }
+        </script> 
+    </body>
+    </html>
